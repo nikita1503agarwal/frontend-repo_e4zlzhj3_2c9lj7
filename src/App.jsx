@@ -1,70 +1,57 @@
+import React from 'react'
+import Hero3D from './components/Hero3D'
+import LeftRail from './components/LeftRail'
+import DisplaceGallery from './components/DisplaceGallery'
+import Marquee from './components/Marquee'
+
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      {/* Subtle pattern overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.05),transparent_50%)]"></div>
-
-      <div className="relative min-h-screen flex items-center justify-center p-8">
-        <div className="max-w-2xl w-full">
-          {/* Header with Flames icon */}
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center mb-6">
-              <img
-                src="/flame-icon.svg"
-                alt="Flames"
-                className="w-24 h-24 drop-shadow-[0_0_25px_rgba(59,130,246,0.5)]"
-              />
-            </div>
-
-            <h1 className="text-5xl font-bold text-white mb-4 tracking-tight">
-              Flames Blue
-            </h1>
-
-            <p className="text-xl text-blue-200 mb-6">
-              Build applications through conversation
-            </p>
+    <div className="min-h-screen bg-gradient-to-b from-[#0a0b10] via-[#0b0d16] to-black text-white">
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(1200px_600px_at_20%_-10%,rgba(99,102,241,0.15),transparent_60%)]" />
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="md:grid md:grid-cols-[340px,1fr] md:gap-8">
+          {/* Left rail with key info */}
+          <div className="md:pr-4 order-1 md:order-none">
+            <LeftRail />
           </div>
 
-          {/* Instructions */}
-          <div className="bg-slate-800/50 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-8 shadow-xl mb-6">
-            <div className="flex items-start gap-4 mb-6">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold">
-                1
-              </div>
-              <div>
-                <h3 className="font-semibold text-white mb-1">Describe your idea</h3>
-                <p className="text-blue-200/80 text-sm">Use the chat panel on the left to tell the AI what you want to build</p>
-              </div>
-            </div>
+          {/* Main content */}
+          <div className="space-y-8 order-2 md:order-none">
+            <Hero3D />
+            <Marquee />
 
-            <div className="flex items-start gap-4 mb-6">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold">
-                2
+            {/* Case study section with GLSL displacement image */}
+            <section id="work" className="grid md:grid-cols-2 gap-6">
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur">
+                <h3 className="text-2xl font-semibold tracking-tight">Immersive Launch Campaign</h3>
+                <p className="text-slate-300 mt-2">A cinematic website blending WebGL shaders, camera parallax and micro-interactions for a seamless product reveal.</p>
+                <ul className="mt-4 text-slate-400 text-sm list-disc list-inside space-y-1">
+                  <li>Custom GLSL displacement and noise</li>
+                  <li>GSAP timelines + smooth UX</li>
+                  <li>3D scene integration</li>
+                </ul>
               </div>
-              <div>
-                <h3 className="font-semibold text-white mb-1">Watch it build</h3>
-                <p className="text-blue-200/80 text-sm">Your app will appear in this preview as the AI generates the code</p>
-              </div>
-            </div>
+              <DisplaceGallery />
+            </section>
 
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold">
-                3
-              </div>
-              <div>
-                <h3 className="font-semibold text-white mb-1">Refine and iterate</h3>
-                <p className="text-blue-200/80 text-sm">Continue the conversation to add features and make changes</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Footer */}
-          <div className="text-center">
-            <p className="text-sm text-blue-300/60">
-              No coding required • Just describe what you want
-            </p>
+            {/* Contact */}
+            <section id="contact" className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur">
+              <h3 className="text-2xl font-semibold tracking-tight">Let’s build something unreal</h3>
+              <p className="text-slate-300 mt-2">Tell us about your vision. We’ll architect, design and develop the experience end-to-end.</p>
+              <form className="mt-4 grid md:grid-cols-2 gap-4">
+                <input className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 placeholder-slate-400 outline-none focus:border-indigo-400" placeholder="Your name" />
+                <input className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 placeholder-slate-400 outline-none focus:border-indigo-400" placeholder="Email" />
+                <textarea rows="4" className="md:col-span-2 w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 placeholder-slate-400 outline-none focus:border-indigo-400" placeholder="What are you building?" />
+                <button className="md:col-span-2 justify-self-start px-5 py-3 rounded-xl bg-indigo-500 hover:bg-indigo-400 text-white font-medium transition-colors">Send Inquiry</button>
+              </form>
+            </section>
           </div>
         </div>
+
+        {/* Footer */}
+        <footer className="mt-10 text-slate-400 text-sm">
+          © {new Date().getFullYear()} Nebula Studio. All rights reserved.
+        </footer>
       </div>
     </div>
   )
